@@ -126,7 +126,7 @@ class _HomeState extends State<Home> {
                     children: const [
                       WeightButton(),
                       SizedBox(
-                        width: 15.0,
+                        width: 16.0,
                       ),
                       DropDownList(),
                     ],
