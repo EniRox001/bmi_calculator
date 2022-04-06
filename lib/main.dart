@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bmi_calculator/components/build_gender.dart';
+import 'components/build_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +25,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-var weight = 56;
+var weight = 50;
 var height = 162;
 var age = 29;
 List<String> weightCategory = [
@@ -95,11 +97,11 @@ class _HomeState extends State<Home> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: const [
-                      BuildWidget(icon: FontAwesomeIcons.mars, gender: 'Male'),
+                      BuildGender(icon: FontAwesomeIcons.mars, gender: 'Male'),
                       SizedBox(
                         width: 20.0,
                       ),
-                      BuildWidget(
+                      BuildGender(
                           icon: FontAwesomeIcons.venus, gender: 'Female')
                     ],
                   ),
@@ -120,59 +122,18 @@ class _HomeState extends State<Home> {
                 Expanded(
                   child: Row(
                     children: [
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.black,
-                                    shape: const CircleBorder()),
-                                onPressed: () {
-                                  setState(() {
-                                    weight--;
-                                  });
-                                },
-                                child: const Icon(
-                                  Icons.remove,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                weight.toString(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.black,
-                                    shape: const CircleBorder()),
-                                onPressed: () {
-                                  setState(() {
-                                    weight++;
-                                  });
-                                },
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      BuildButton(
+                          measure: weight,
+                          onSubtract: () {
+                            setState(() {
+                              weight--;
+                            });
+                          },
+                          onAdd: () {
+                            setState(() {
+                              weight++;
+                            });
+                          }),
                       const SizedBox(
                         width: 20.0,
                       ),
@@ -230,59 +191,18 @@ class _HomeState extends State<Home> {
                 Expanded(
                   child: Row(
                     children: [
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.black,
-                                    shape: const CircleBorder()),
-                                onPressed: () {
-                                  setState(() {
-                                    height--;
-                                  });
-                                },
-                                child: const Icon(
-                                  Icons.remove,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                height.toString(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.black,
-                                    shape: const CircleBorder()),
-                                onPressed: () {
-                                  setState(() {
-                                    height++;
-                                  });
-                                },
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      BuildButton(
+                          measure: height,
+                          onSubtract: () {
+                            setState(() {
+                              height--;
+                            });
+                          },
+                          onAdd: () {
+                            setState(() {
+                              height++;
+                            });
+                          }),
                       const SizedBox(
                         width: 20.0,
                       ),
@@ -337,59 +257,19 @@ class _HomeState extends State<Home> {
                 const SizedBox(
                   height: 5.0,
                 ),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.black,
-                              shape: const CircleBorder()),
-                          onPressed: () {
-                            setState(() {
-                              age--;
-                            });
-                          },
-                          child: const Icon(
-                            Icons.remove,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          age.toString(),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.black,
-                              shape: const CircleBorder()),
-                          onPressed: () {
-                            setState(() {
-                              age++;
-                            });
-                          },
-                          child: const Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
+                BuildButton(
+                    measure: age,
+                    onSubtract: () {
+                      setState(() {
+                        age--;
+                      });
+                    },
+                    onAdd: () {
+                      setState(() {
+                        age++;
+                      });
+                    }),
+                SizedBox(
                   height: 25.0,
                 ),
                 Expanded(
@@ -415,63 +295,6 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class BuildWidget extends StatelessWidget {
-  const BuildWidget({
-    Key? key,
-    required this.icon,
-    required this.gender,
-  }) : super(key: key);
-
-  final IconData icon;
-  final String gender;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(
-            0xFF333335,
-          ),
-          border: Border.all(
-            width: 3.0,
-            color: Colors.green,
-          ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10.0),
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                FaIcon(
-                  icon,
-                  color: Colors.white,
-                  size: 50.0,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  gender,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ],
         ),
       ),
     );
